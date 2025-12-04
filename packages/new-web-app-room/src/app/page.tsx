@@ -1,8 +1,10 @@
 'use client';
 
 import { useState } from 'react';
+import { useTheme } from '../contexts/ThemeContext';
 
 export default function Calculator() {
+  const { theme, toggleTheme } = useTheme();
   const [display, setDisplay] = useState('0');
   const [previousValue, setPreviousValue] = useState<number | null>(null);
   const [operation, setOperation] = useState<string | null>(null);
@@ -91,12 +93,39 @@ export default function Calculator() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 flex flex-col items-center justify-center p-4">
-      <h1 className="text-4xl font-bold text-white mb-8">Calculator v4</h1>
-      <div className="bg-gray-800 rounded-3xl p-6 shadow-2xl max-w-sm w-full border border-gray-700">
+    <div className={`min-h-screen flex flex-col items-center justify-center p-4 transition-colors ${
+      theme === 'dark' ? 'bg-gray-900' : 'bg-gray-100'
+    }`}>
+      <div className="flex items-center gap-4 mb-8">
+        <h1 className={`text-4xl font-bold ${theme === 'dark' ? 'text-white' : 'text-gray-900'}`}>
+          Calculator v5
+        </h1>
+        <button
+          onClick={toggleTheme}
+          className={`p-3 rounded-full transition-colors ${
+            theme === 'dark' 
+              ? 'bg-gray-700 hover:bg-gray-600 text-yellow-400' 
+              : 'bg-white hover:bg-gray-50 text-gray-700 shadow-md'
+          }`}
+          aria-label="Toggle theme"
+        >
+          {theme === 'dark' ? '☀️' : '🌙'}
+        </button>
+      </div>
+      <div className={`rounded-3xl p-6 shadow-2xl max-w-sm w-full border transition-colors ${
+        theme === 'dark' 
+          ? 'bg-gray-800 border-gray-700' 
+          : 'bg-white border-gray-200'
+      }`}>
         {/* Display */}
-        <div className="bg-gray-900 rounded-2xl p-6 mb-4 border border-gray-600">
-          <div className="text-right text-white text-4xl font-light overflow-hidden">
+        <div className={`rounded-2xl p-6 mb-4 border transition-colors ${
+          theme === 'dark' 
+            ? 'bg-gray-900 border-gray-600' 
+            : 'bg-gray-50 border-gray-300'
+        }`}>
+          <div className={`text-right text-4xl font-light overflow-hidden ${
+            theme === 'dark' ? 'text-white' : 'text-gray-900'
+          }`}>
             {display.length > 9 ? display.slice(0, 9) + '...' : display}
           </div>
         </div>
@@ -106,26 +135,44 @@ export default function Calculator() {
           {/* Row 1 */}
           <button
             onClick={clear}
-            className="bg-gray-600 hover:bg-gray-500 text-white text-xl font-medium rounded-full h-16 transition-colors"
+            className={`text-xl font-medium rounded-full h-16 transition-colors ${
+              theme === 'dark' 
+                ? 'bg-gray-600 hover:bg-gray-500 text-white' 
+                : 'bg-gray-300 hover:bg-gray-400 text-gray-900'
+            }`}
           >
             AC
           </button>
           <button
             onClick={toggleSign}
-            className="bg-gray-600 hover:bg-gray-500 text-white text-xl font-medium rounded-full h-16 transition-colors"
+            className={`text-xl font-medium rounded-full h-16 transition-colors ${
+              theme === 'dark' 
+                ? 'bg-gray-600 hover:bg-gray-500 text-white' 
+                : 'bg-gray-300 hover:bg-gray-400 text-gray-900'
+            }`}
           >
             ±
           </button>
           <button
             onClick={percentage}
-            className="bg-gray-600 hover:bg-gray-500 text-white text-xl font-medium rounded-full h-16 transition-colors"
+            className={`text-xl font-medium rounded-full h-16 transition-colors ${
+              theme === 'dark' 
+                ? 'bg-gray-600 hover:bg-gray-500 text-white' 
+                : 'bg-gray-300 hover:bg-gray-400 text-gray-900'
+            }`}
           >
             %
           </button>
           <button
             onClick={() => inputOperation('÷')}
-            className={`text-white text-2xl font-light rounded-full h-16 transition-colors ${
-              operation === '÷' ? 'bg-gray-700 text-orange-400 border-2 border-orange-400' : 'bg-orange-500 hover:bg-orange-600'
+            className={`text-2xl font-light rounded-full h-16 transition-colors ${
+              operation === '÷' 
+                ? theme === 'dark'
+                  ? 'bg-gray-700 text-orange-400 border-2 border-orange-400'
+                  : 'bg-gray-200 text-orange-600 border-2 border-orange-600'
+                : theme === 'dark'
+                  ? 'bg-orange-500 hover:bg-orange-600 text-white'
+                  : 'bg-orange-500 hover:bg-orange-600 text-white'
             }`}
           >
             ÷
@@ -134,26 +181,44 @@ export default function Calculator() {
           {/* Row 2 */}
           <button
             onClick={() => inputNumber('7')}
-            className="bg-gray-700 hover:bg-gray-600 text-white text-2xl font-light rounded-full h-16 transition-colors"
+            className={`text-2xl font-light rounded-full h-16 transition-colors ${
+              theme === 'dark' 
+                ? 'bg-gray-700 hover:bg-gray-600 text-white' 
+                : 'bg-gray-200 hover:bg-gray-300 text-gray-900'
+            }`}
           >
             7
           </button>
           <button
             onClick={() => inputNumber('8')}
-            className="bg-gray-700 hover:bg-gray-600 text-white text-2xl font-light rounded-full h-16 transition-colors"
+            className={`text-2xl font-light rounded-full h-16 transition-colors ${
+              theme === 'dark' 
+                ? 'bg-gray-700 hover:bg-gray-600 text-white' 
+                : 'bg-gray-200 hover:bg-gray-300 text-gray-900'
+            }`}
           >
             8
           </button>
           <button
             onClick={() => inputNumber('9')}
-            className="bg-gray-700 hover:bg-gray-600 text-white text-2xl font-light rounded-full h-16 transition-colors"
+            className={`text-2xl font-light rounded-full h-16 transition-colors ${
+              theme === 'dark' 
+                ? 'bg-gray-700 hover:bg-gray-600 text-white' 
+                : 'bg-gray-200 hover:bg-gray-300 text-gray-900'
+            }`}
           >
             9
           </button>
           <button
             onClick={() => inputOperation('×')}
-            className={`text-white text-2xl font-light rounded-full h-16 transition-colors ${
-              operation === '×' ? 'bg-gray-700 text-orange-400 border-2 border-orange-400' : 'bg-orange-500 hover:bg-orange-600'
+            className={`text-2xl font-light rounded-full h-16 transition-colors ${
+              operation === '×' 
+                ? theme === 'dark'
+                  ? 'bg-gray-700 text-orange-400 border-2 border-orange-400'
+                  : 'bg-gray-200 text-orange-600 border-2 border-orange-600'
+                : theme === 'dark'
+                  ? 'bg-orange-500 hover:bg-orange-600 text-white'
+                  : 'bg-orange-500 hover:bg-orange-600 text-white'
             }`}
           >
             ×
@@ -162,26 +227,44 @@ export default function Calculator() {
           {/* Row 3 */}
           <button
             onClick={() => inputNumber('4')}
-            className="bg-gray-700 hover:bg-gray-600 text-white text-2xl font-light rounded-full h-16 transition-colors"
+            className={`text-2xl font-light rounded-full h-16 transition-colors ${
+              theme === 'dark' 
+                ? 'bg-gray-700 hover:bg-gray-600 text-white' 
+                : 'bg-gray-200 hover:bg-gray-300 text-gray-900'
+            }`}
           >
             4
           </button>
           <button
             onClick={() => inputNumber('5')}
-            className="bg-gray-700 hover:bg-gray-600 text-white text-2xl font-light rounded-full h-16 transition-colors"
+            className={`text-2xl font-light rounded-full h-16 transition-colors ${
+              theme === 'dark' 
+                ? 'bg-gray-700 hover:bg-gray-600 text-white' 
+                : 'bg-gray-200 hover:bg-gray-300 text-gray-900'
+            }`}
           >
             5
           </button>
           <button
             onClick={() => inputNumber('6')}
-            className="bg-gray-700 hover:bg-gray-600 text-white text-2xl font-light rounded-full h-16 transition-colors"
+            className={`text-2xl font-light rounded-full h-16 transition-colors ${
+              theme === 'dark' 
+                ? 'bg-gray-700 hover:bg-gray-600 text-white' 
+                : 'bg-gray-200 hover:bg-gray-300 text-gray-900'
+            }`}
           >
             6
           </button>
           <button
             onClick={() => inputOperation('-')}
-            className={`text-white text-2xl font-light rounded-full h-16 transition-colors ${
-              operation === '-' ? 'bg-gray-700 text-orange-400 border-2 border-orange-400' : 'bg-orange-500 hover:bg-orange-600'
+            className={`text-2xl font-light rounded-full h-16 transition-colors ${
+              operation === '-' 
+                ? theme === 'dark'
+                  ? 'bg-gray-700 text-orange-400 border-2 border-orange-400'
+                  : 'bg-gray-200 text-orange-600 border-2 border-orange-600'
+                : theme === 'dark'
+                  ? 'bg-orange-500 hover:bg-orange-600 text-white'
+                  : 'bg-orange-500 hover:bg-orange-600 text-white'
             }`}
           >
             −
@@ -190,26 +273,44 @@ export default function Calculator() {
           {/* Row 4 */}
           <button
             onClick={() => inputNumber('1')}
-            className="bg-gray-700 hover:bg-gray-600 text-white text-2xl font-light rounded-full h-16 transition-colors"
+            className={`text-2xl font-light rounded-full h-16 transition-colors ${
+              theme === 'dark' 
+                ? 'bg-gray-700 hover:bg-gray-600 text-white' 
+                : 'bg-gray-200 hover:bg-gray-300 text-gray-900'
+            }`}
           >
             1
           </button>
           <button
             onClick={() => inputNumber('2')}
-            className="bg-gray-700 hover:bg-gray-600 text-white text-2xl font-light rounded-full h-16 transition-colors"
+            className={`text-2xl font-light rounded-full h-16 transition-colors ${
+              theme === 'dark' 
+                ? 'bg-gray-700 hover:bg-gray-600 text-white' 
+                : 'bg-gray-200 hover:bg-gray-300 text-gray-900'
+            }`}
           >
             2
           </button>
           <button
             onClick={() => inputNumber('3')}
-            className="bg-gray-700 hover:bg-gray-600 text-white text-2xl font-light rounded-full h-16 transition-colors"
+            className={`text-2xl font-light rounded-full h-16 transition-colors ${
+              theme === 'dark' 
+                ? 'bg-gray-700 hover:bg-gray-600 text-white' 
+                : 'bg-gray-200 hover:bg-gray-300 text-gray-900'
+            }`}
           >
             3
           </button>
           <button
             onClick={() => inputOperation('+')}
-            className={`text-white text-2xl font-light rounded-full h-16 transition-colors ${
-              operation === '+' ? 'bg-gray-700 text-orange-400 border-2 border-orange-400' : 'bg-orange-500 hover:bg-orange-600'
+            className={`text-2xl font-light rounded-full h-16 transition-colors ${
+              operation === '+' 
+                ? theme === 'dark'
+                  ? 'bg-gray-700 text-orange-400 border-2 border-orange-400'
+                  : 'bg-gray-200 text-orange-600 border-2 border-orange-600'
+                : theme === 'dark'
+                  ? 'bg-orange-500 hover:bg-orange-600 text-white'
+                  : 'bg-orange-500 hover:bg-orange-600 text-white'
             }`}
           >
             +
@@ -218,13 +319,21 @@ export default function Calculator() {
           {/* Row 5 */}
           <button
             onClick={() => inputNumber('0')}
-            className="bg-gray-700 hover:bg-gray-600 text-white text-2xl font-light rounded-full h-16 col-span-2 transition-colors"
+            className={`text-2xl font-light rounded-full h-16 col-span-2 transition-colors ${
+              theme === 'dark' 
+                ? 'bg-gray-700 hover:bg-gray-600 text-white' 
+                : 'bg-gray-200 hover:bg-gray-300 text-gray-900'
+            }`}
           >
             0
           </button>
           <button
             onClick={inputDecimal}
-            className="bg-gray-700 hover:bg-gray-600 text-white text-2xl font-light rounded-full h-16 transition-colors"
+            className={`text-2xl font-light rounded-full h-16 transition-colors ${
+              theme === 'dark' 
+                ? 'bg-gray-700 hover:bg-gray-600 text-white' 
+                : 'bg-gray-200 hover:bg-gray-300 text-gray-900'
+            }`}
           >
             .
           </button>
@@ -239,6 +348,15 @@ export default function Calculator() {
     </div>
   );
 }
+
+
+
+
+
+
+
+
+
 
 
 

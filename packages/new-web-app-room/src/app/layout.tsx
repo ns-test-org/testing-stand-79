@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Calculator App v3",
+  title: "v5",
   description: "A beautiful calculator app with all the essential functions",
 };
 
@@ -32,5 +32,6 @@ export default function RootLayout({
     </html>
   );
 }
+
 
 

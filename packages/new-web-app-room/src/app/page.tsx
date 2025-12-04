@@ -91,7 +91,8 @@ export default function Calculator() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
+      <h1 className="text-4xl font-bold text-gray-800 mb-8">Calculator v3</h1>
       <div className="bg-white rounded-3xl p-6 shadow-2xl max-w-sm w-full border border-gray-200">
         {/* Display */}
         <div className="bg-gray-50 rounded-2xl p-6 mb-4 border border-gray-200">
@@ -238,6 +239,7 @@ export default function Calculator() {
     </div>
   );
 }
+
 
 
 

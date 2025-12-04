@@ -91,12 +91,12 @@ export default function Calculator() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
-      <h1 className="text-4xl font-bold text-gray-800 mb-8">Calculator v4</h1>
-      <div className="bg-white rounded-3xl p-6 shadow-2xl max-w-sm w-full border border-gray-200">
+    <div className="min-h-screen bg-gray-900 flex flex-col items-center justify-center p-4">
+      <h1 className="text-4xl font-bold text-white mb-8">Calculator v4</h1>
+      <div className="bg-gray-800 rounded-3xl p-6 shadow-2xl max-w-sm w-full border border-gray-700">
         {/* Display */}
-        <div className="bg-gray-50 rounded-2xl p-6 mb-4 border border-gray-200">
-          <div className="text-right text-gray-900 text-4xl font-light overflow-hidden">
+        <div className="bg-gray-900 rounded-2xl p-6 mb-4 border border-gray-600">
+          <div className="text-right text-white text-4xl font-light overflow-hidden">
             {display.length > 9 ? display.slice(0, 9) + '...' : display}
           </div>
         </div>
@@ -106,26 +106,26 @@ export default function Calculator() {
           {/* Row 1 */}
           <button
             onClick={clear}
-            className="bg-gray-300 hover:bg-gray-400 text-gray-900 text-xl font-medium rounded-full h-16 transition-colors"
+            className="bg-gray-600 hover:bg-gray-500 text-white text-xl font-medium rounded-full h-16 transition-colors"
           >
             AC
           </button>
           <button
             onClick={toggleSign}
-            className="bg-gray-300 hover:bg-gray-400 text-gray-900 text-xl font-medium rounded-full h-16 transition-colors"
+            className="bg-gray-600 hover:bg-gray-500 text-white text-xl font-medium rounded-full h-16 transition-colors"
           >
             ±
           </button>
           <button
             onClick={percentage}
-            className="bg-gray-300 hover:bg-gray-400 text-gray-900 text-xl font-medium rounded-full h-16 transition-colors"
+            className="bg-gray-600 hover:bg-gray-500 text-white text-xl font-medium rounded-full h-16 transition-colors"
           >
             %
           </button>
           <button
             onClick={() => inputOperation('÷')}
             className={`text-white text-2xl font-light rounded-full h-16 transition-colors ${
-              operation === '÷' ? 'bg-gray-200 text-blue-600 border-2 border-blue-600' : 'bg-blue-500 hover:bg-blue-600'
+              operation === '÷' ? 'bg-gray-700 text-orange-400 border-2 border-orange-400' : 'bg-orange-500 hover:bg-orange-600'
             }`}
           >
             ÷
@@ -134,26 +134,26 @@ export default function Calculator() {
           {/* Row 2 */}
           <button
             onClick={() => inputNumber('7')}
-            className="bg-gray-200 hover:bg-gray-300 text-gray-900 text-2xl font-light rounded-full h-16 transition-colors"
+            className="bg-gray-700 hover:bg-gray-600 text-white text-2xl font-light rounded-full h-16 transition-colors"
           >
             7
           </button>
           <button
             onClick={() => inputNumber('8')}
-            className="bg-gray-200 hover:bg-gray-300 text-gray-900 text-2xl font-light rounded-full h-16 transition-colors"
+            className="bg-gray-700 hover:bg-gray-600 text-white text-2xl font-light rounded-full h-16 transition-colors"
           >
             8
           </button>
           <button
             onClick={() => inputNumber('9')}
-            className="bg-gray-200 hover:bg-gray-300 text-gray-900 text-2xl font-light rounded-full h-16 transition-colors"
+            className="bg-gray-700 hover:bg-gray-600 text-white text-2xl font-light rounded-full h-16 transition-colors"
           >
             9
           </button>
           <button
             onClick={() => inputOperation('×')}
             className={`text-white text-2xl font-light rounded-full h-16 transition-colors ${
-              operation === '×' ? 'bg-gray-200 text-blue-600 border-2 border-blue-600' : 'bg-blue-500 hover:bg-blue-600'
+              operation === '×' ? 'bg-gray-700 text-orange-400 border-2 border-orange-400' : 'bg-orange-500 hover:bg-orange-600'
             }`}
           >
             ×
@@ -162,26 +162,26 @@ export default function Calculator() {
           {/* Row 3 */}
           <button
             onClick={() => inputNumber('4')}
-            className="bg-gray-200 hover:bg-gray-300 text-gray-900 text-2xl font-light rounded-full h-16 transition-colors"
+            className="bg-gray-700 hover:bg-gray-600 text-white text-2xl font-light rounded-full h-16 transition-colors"
           >
             4
           </button>
           <button
             onClick={() => inputNumber('5')}
-            className="bg-gray-200 hover:bg-gray-300 text-gray-900 text-2xl font-light rounded-full h-16 transition-colors"
+            className="bg-gray-700 hover:bg-gray-600 text-white text-2xl font-light rounded-full h-16 transition-colors"
           >
             5
           </button>
           <button
             onClick={() => inputNumber('6')}
-            className="bg-gray-200 hover:bg-gray-300 text-gray-900 text-2xl font-light rounded-full h-16 transition-colors"
+            className="bg-gray-700 hover:bg-gray-600 text-white text-2xl font-light rounded-full h-16 transition-colors"
           >
             6
           </button>
           <button
             onClick={() => inputOperation('-')}
             className={`text-white text-2xl font-light rounded-full h-16 transition-colors ${
-              operation === '-' ? 'bg-gray-200 text-blue-600 border-2 border-blue-600' : 'bg-blue-500 hover:bg-blue-600'
+              operation === '-' ? 'bg-gray-700 text-orange-400 border-2 border-orange-400' : 'bg-orange-500 hover:bg-orange-600'
             }`}
           >
             −
@@ -190,26 +190,26 @@ export default function Calculator() {
           {/* Row 4 */}
           <button
             onClick={() => inputNumber('1')}
-            className="bg-gray-200 hover:bg-gray-300 text-gray-900 text-2xl font-light rounded-full h-16 transition-colors"
+            className="bg-gray-700 hover:bg-gray-600 text-white text-2xl font-light rounded-full h-16 transition-colors"
           >
             1
           </button>
           <button
             onClick={() => inputNumber('2')}
-            className="bg-gray-200 hover:bg-gray-300 text-gray-900 text-2xl font-light rounded-full h-16 transition-colors"
+            className="bg-gray-700 hover:bg-gray-600 text-white text-2xl font-light rounded-full h-16 transition-colors"
           >
             2
           </button>
           <button
             onClick={() => inputNumber('3')}
-            className="bg-gray-200 hover:bg-gray-300 text-gray-900 text-2xl font-light rounded-full h-16 transition-colors"
+            className="bg-gray-700 hover:bg-gray-600 text-white text-2xl font-light rounded-full h-16 transition-colors"
           >
             3
           </button>
           <button
             onClick={() => inputOperation('+')}
             className={`text-white text-2xl font-light rounded-full h-16 transition-colors ${
-              operation === '+' ? 'bg-gray-200 text-blue-600 border-2 border-blue-600' : 'bg-blue-500 hover:bg-blue-600'
+              operation === '+' ? 'bg-gray-700 text-orange-400 border-2 border-orange-400' : 'bg-orange-500 hover:bg-orange-600'
             }`}
           >
             +
@@ -218,13 +218,13 @@ export default function Calculator() {
           {/* Row 5 */}
           <button
             onClick={() => inputNumber('0')}
-            className="bg-gray-200 hover:bg-gray-300 text-gray-900 text-2xl font-light rounded-full h-16 col-span-2 transition-colors"
+            className="bg-gray-700 hover:bg-gray-600 text-white text-2xl font-light rounded-full h-16 col-span-2 transition-colors"
           >
             0
           </button>
           <button
             onClick={inputDecimal}
-            className="bg-gray-200 hover:bg-gray-300 text-gray-900 text-2xl font-light rounded-full h-16 transition-colors"
+            className="bg-gray-700 hover:bg-gray-600 text-white text-2xl font-light rounded-full h-16 transition-colors"
           >
             .
           </button>
@@ -239,6 +239,17 @@ export default function Calculator() {
     </div>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 
